@@ -1,0 +1,22 @@
+{
+    "name": "phidias/icons.api",
+    "description": "Public icons API",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Santiago Cortés",
+            "email": "santiago.cortes@phidias.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "Phidias\\Icons\\": "src/"
+        }
+    },
+
+    "require": {
+        "phidias/api": "*",
+        "intervention/image": "^2.3"
+    }
+}
