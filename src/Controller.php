@@ -17,11 +17,15 @@ class Controller
         $iconName  = $info["filename"];
         $extension = $info["extension"];
         $size      = $request->getParameter("size",  512);
-        $color     = trim($request->getParameter("color", $extension == "png" ? "fff" : "000"), '#');
+        $color     = trim($request->getParameter("color"), '#');
+
+        if (!$color) {
+            $color = $extension == "png" ? "fff" : "000";
+        }
 
         $filename       = "icons/{$iconName}_{$size}_{$color}.{$extension}";
         $targetFolder   = realpath(".");
-        $targetLocation = "http://".$_SERVER["HTTP_HOST"]."/".$filename;
+        $targetLocation = "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["SCRIPT_NAME"])."/".$filename;
 
         if (is_file($targetFolder.'/'.$filename)) {
             return $response
