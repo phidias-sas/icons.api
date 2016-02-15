@@ -15,7 +15,7 @@ class Controller
     {
         $info      = pathinfo($icon);
         $iconName  = $info["filename"];
-        $extension = $info["extension"];
+        $extension = isset($info["extension"]) ? $info["extension"] : "png";
         $size      = $request->getParameter("size",  512);
         $color     = trim($request->getParameter("color"), '#');
 
