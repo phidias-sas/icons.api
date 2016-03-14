@@ -17,11 +17,8 @@ class Controller
         $iconName  = $info["filename"];
         $extension = isset($info["extension"]) ? $info["extension"] : "png";
         $size      = $request->getParameter("size",  512);
-        $color     = trim($request->getParameter("color"), '#');
+        $color     = trim($request->getParameter("color", "777"), '#');
 
-        if (!$color) {
-            $color = $extension == "png" ? "fff" : "000";
-        }
 
         $filename       = "icons/{$iconName}_{$size}_{$color}.{$extension}";
         $targetFolder   = realpath(".");
