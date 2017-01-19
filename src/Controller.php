@@ -23,7 +23,7 @@ class Controller
         $filename       = "icons/{$iconName}_{$size}_{$color}.{$extension}";
         $targetFolder   = realpath(".");
 
-        $protocol       = isset($_SERVER["HTTPS"]) ? "https" : "http";
+        $protocol       = isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) ? $_SERVER["HTTP_X_FORWARDED_PROTO"] : (isset($_SERVER["HTTPS"]) ? "https" : "http");
         $targetLocation = $protocol."://".$_SERVER["HTTP_HOST"].dirname($_SERVER["SCRIPT_NAME"])."/".$filename;
 
         if (is_file($targetFolder.'/'.$filename)) {
