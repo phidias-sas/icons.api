@@ -42,12 +42,10 @@ class Controller
 
         $canvas = Image::canvas($size, $size);
 
-        $canvas->text($iconChar, $size/2, $size/2, function($font) use ($ttf, $size, $color) {
+        $canvas->text($iconChar, 0, $size, function($font) use ($ttf, $size, $color) {
             $font->file($ttf);
-            $font->size($size-2);
+            $font->size($size);
             $font->color('#'.$color);
-            $font->align('center');
-            $font->valign('center');
         });
 
         $canvas->save($targetFolder.'/'.$filename);
