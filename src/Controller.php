@@ -1,6 +1,5 @@
 <?php
 namespace Phidias\Icons;
-
 use Intervention\Image\ImageManagerStatic as Image;
 
 class Controller
@@ -19,7 +18,6 @@ class Controller
         $size      = $request->getParameter("size",  512);
         $color     = trim($request->getParameter("color", "777"), '#');
 
-
         $filename       = "icons/{$iconName}_{$size}_{$color}.{$extension}";
         $targetFolder   = realpath(".");
 
@@ -32,8 +30,9 @@ class Controller
                 ->header("Location", $targetLocation);
         }
 
-        $ttf        = realpath(dirname(__FILE__)."/../webfonts/fontawesome/fontawesome-webfont.ttf");
-        $characters = include realpath(dirname(__FILE__)."/../webfonts/fontawesome/characters.php");
+        $prefix     = explode("-", $iconName, 2)[0];
+        $ttf        = realpath(dirname(__FILE__)."/../webfonts/$prefix/webfont.ttf");
+        $characters = include realpath(dirname(__FILE__)."/../webfonts/$prefix/characters.php");
 
         if (!isset($characters[$iconName])) {
             return $response->status(404);
@@ -56,7 +55,5 @@ class Controller
         return $response
             ->status(301)
             ->header("Location", $targetLocation);
-
     }
-
 }

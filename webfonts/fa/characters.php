@@ -1,5 +1,4 @@
 <?php return [
-
 'fa-500px'                  => 'xf26e',
 'fa-adjust'                 => 'xf042',
 'fa-adn'                    => 'xf170',
@@ -674,5 +673,4 @@
 'fa-youtube'                => 'xf167',
 'fa-youtube-play'           => 'xf16a',
 'fa-youtube-square'         => 'xf166'
-
 ];
