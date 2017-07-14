@@ -1,15 +1,14 @@
-<?php return [
-
-    "/icons" => [
+<?php 
+return [
+    "/icons/{prefix}" => [
         "get" => [
-            "controller" => "Phidias\Icons\Controller->getList()"
+            "controller" => "Phidias\Icons\Controller->getList({prefix})"
         ]
     ],
 
-    "/icons/{icon*}" => [
+    "/icons/{prefix}/{size}/{color}/{icon}" => [
         "get" => [
-            "controller" => "Phidias\Icons\Controller->get({icon}, {request}, {response})"
+            "controller" => "Phidias\Icons\Controller->get({prefix}, {size}, {color}, {icon}, {response})"
         ]
     ]
-
 ];
