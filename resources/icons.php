@@ -1,6 +1,14 @@
-<?php 
+<?php
 return [
-    "/icons/{prefix}" => [
+
+    /* OLD resource, for backwards compatibility only */
+    "/icons/{filename}" => [
+        "get" => [
+            "controller" => "Phidias\Icons\Controller->old({filename}, {query}, {response})"
+        ]
+    ],
+
+    "/icons/{prefix}/list" => [
         "get" => [
             "controller" => "Phidias\Icons\Controller->getList({prefix})"
         ]

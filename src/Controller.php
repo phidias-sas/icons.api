@@ -4,6 +4,18 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class Controller
 {
+    public function old($filename, $query, $response)
+    {
+        $color  = isset($query->color) ? $query->color: '999999';
+        $size   = isset($query->size)  ? $query->size:   64;
+        $parts  = explode("-", $filename, 2);
+        $newUrl = $parts[0]."/$size/$color/".$parts[1];
+
+        return $response
+            ->status(301)
+            ->header("location", $newUrl);
+    }
+
     public function getList($prefix)
     {
         $characters = include realpath(dirname(__FILE__)."/../webfonts/$prefix/characters.php");
