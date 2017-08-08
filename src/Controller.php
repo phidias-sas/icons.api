@@ -7,6 +7,8 @@ class Controller
     public function old($filename, $query, $response)
     {
         $color  = isset($query->color) ? $query->color: '999999';
+        $color  = str_replace('#', '', $color);
+
         $size   = isset($query->size)  ? $query->size:   64;
         $parts  = explode("-", $filename, 2);
         $newUrl = $parts[0]."/$size/$color/".$parts[1];
@@ -37,7 +39,6 @@ class Controller
         $characters = include realpath(dirname(__FILE__)."/../webfonts/$prefix/characters.php");
 
         if (!isset($characters[$iconName])) {
-            return [$prefix, $size, $color, $iconName];
             return $response->status(404);
         }
 
