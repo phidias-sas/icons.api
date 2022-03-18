@@ -47,7 +47,7 @@ class Controller
         $canvas = Image::canvas($size, $size);
 
         /* !!! Godammit!  fix alignment issues: */
-        $offsetX = $prefix == 'md' ? $size/2 - $size/12 : $size/2;
+        $offsetX = $size/2;
 
         $canvas->text($iconChar, $offsetX, $size/2, function($font) use ($ttf, $size, $color) {
             $font->file($ttf);
